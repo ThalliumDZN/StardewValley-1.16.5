@@ -1,4 +1,8 @@
-# Fabric Example Mod
+# Stardew Valley Minecraft Mod
+
+## About
+
+This is a large mod for Minecraft Java Edition that practically implements everything from the video game Stardew Valley into our beloved Minecraft worlds!
 
 ## Setup
 
