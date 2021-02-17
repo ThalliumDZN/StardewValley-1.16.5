@@ -1,9 +1,11 @@
 package com.thallium.sdvm.gui.widgets;
 
 import com.thallium.sdvm.StardewValley;
+import com.thallium.sdvm.registry.ModNetworking;
 import com.thallium.sdvm.util.cca.IMoneyComponent;
 import com.thallium.sdvm.util.cca.MoneyComponent;
 import com.thallium.sdvm.util.cca.MyComponents;
+import com.thallium.sdvm.util.networking.CurrencyPacketUtil;
 import dev.onyxstudios.cca.api.v3.component.sync.ComponentPacketWriter;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
@@ -36,7 +38,10 @@ public class WClearButton extends WWidget
     protected HorizontalAlignment alignment;
     @Nullable
     private Runnable onClick;
+
     public PlayerEntity player;
+    public ServerPlayerEntity serverPlayer;
+    public PacketByteBuf buf = PacketByteBufs.create();
 
     public WClearButton(Text textField)
     {
@@ -80,11 +85,14 @@ public class WClearButton extends WWidget
     public void onClick(int x, int y, int button)
     {
         super.onClick(x, y, button);
-        if (this.enabled && this.isWithinBounds(x, y)) {
+        if (this.enabled && this.isWithinBounds(x, y))
+        {
             MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             if (this.onClick != null)
             {
-                MyComponents.MONEY.maybeGet(player).ifPresent(IMoneyComponent::incrementValue);
+                //MyComponents.MONEY.maybeGet(MinecraftClient.getInstance().player).ifPresent(IMoneyComponent::incrementValue);
+                MyComponents.MONEY.get(MinecraftClient.getInstance().player).incrementValue();
+                //ServerPlayNetworking.send(serverPlayer, CurrencyPacketUtil.CURRENCY_C2S, PacketByteBufs.empty());
 
                 this.onClick.run();
             }

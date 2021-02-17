@@ -1,6 +1,5 @@
 package com.thallium.sdvm.util.cca;
 
-import com.thallium.sdvm.StardewValley;
 import dev.onyxstudios.cca.api.v3.component.ComponentKey;
 import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
 import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;

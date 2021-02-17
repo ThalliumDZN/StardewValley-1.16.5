@@ -29,6 +29,7 @@ public class MixinFarmland
         int i = (Integer)state.get(MOISTURE);
         if (!isWatered(world, pos))
         {
+            assert MinecraftClient.getInstance().world != null;
             if (MinecraftClient.getInstance().world.getTime() == 0)
             {
                 world.setBlockState(pos, (BlockState)state.with(MOISTURE, 0));

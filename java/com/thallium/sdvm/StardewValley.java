@@ -1,20 +1,19 @@
 package com.thallium.sdvm;
 
 import com.thallium.sdvm.registry.*;
-import com.thallium.sdvm.util.cca.IMoneyComponent;
-import com.thallium.sdvm.util.cca.MyComponents;
+import com.thallium.sdvm.util.networking.CurrencyNetworking;
+import com.thallium.sdvm.util.networking.CurrencyPacketUtil;
 import com.thallium.sdvm.village.MarlonVillagerProfession;
-import dev.onyxstudios.cca.api.v3.component.ComponentKey;
-import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
-import dev.onyxstudios.cca.api.v3.component.ComponentRegistryV3;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentInitializer;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.minecraft.client.MinecraftClient;
+import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
+import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+
+import java.util.Currency;
 
 public class StardewValley implements ModInitializer
 {
@@ -34,6 +33,9 @@ public class StardewValley implements ModInitializer
 
         //Villager Registry List
         MarlonVillagerProfession.init();
+
+        //Networking Registry List
+        CurrencyNetworking.init();
     }
 
     //ITEM GROUPS
