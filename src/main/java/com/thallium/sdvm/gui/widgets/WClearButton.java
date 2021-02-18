@@ -1,19 +1,12 @@
 package com.thallium.sdvm.gui.widgets;
 
-import com.thallium.sdvm.StardewValley;
-import com.thallium.sdvm.registry.ModNetworking;
-import com.thallium.sdvm.util.cca.IMoneyComponent;
-import com.thallium.sdvm.util.cca.MoneyComponent;
-import com.thallium.sdvm.util.cca.MyComponents;
-import com.thallium.sdvm.util.networking.CurrencyPacketUtil;
-import dev.onyxstudios.cca.api.v3.component.sync.ComponentPacketWriter;
+import com.thallium.sdvm.util.networking.CurrencyUtils;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.HorizontalAlignment;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
@@ -21,14 +14,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import net.prismatic.monetarysolutions.MonetarySolutionsInitializer;
-import net.prismatic.monetarysolutions.api.Money;
 import org.jetbrains.annotations.Nullable;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 public class WClearButton extends WWidget
@@ -91,7 +79,7 @@ public class WClearButton extends WWidget
             if (this.onClick != null)
             {
                 //MyComponents.MONEY.maybeGet(MinecraftClient.getInstance().player).ifPresent(IMoneyComponent::incrementValue);
-                MyComponents.MONEY.get(MinecraftClient.getInstance().player).incrementValue();
+               CurrencyUtils.addMoney(1);
                 //ServerPlayNetworking.send(serverPlayer, CurrencyPacketUtil.CURRENCY_C2S, PacketByteBufs.empty());
 
                 this.onClick.run();

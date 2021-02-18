@@ -2,18 +2,13 @@ package com.thallium.sdvm;
 
 import com.thallium.sdvm.registry.*;
 import com.thallium.sdvm.util.networking.CurrencyNetworking;
-import com.thallium.sdvm.util.networking.CurrencyPacketUtil;
 import com.thallium.sdvm.village.MarlonVillagerProfession;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
-
-import java.util.Currency;
 
 public class StardewValley implements ModInitializer
 {

@@ -9,7 +9,6 @@ import net.minecraft.item.SwordItem;
 import net.minecraft.item.ToolItem;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import sun.security.provider.SHA;
 
 public class ModTools
 {

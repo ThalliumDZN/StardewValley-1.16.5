@@ -1,16 +1,13 @@
 package com.thallium.sdvm.mixin;
 
-import com.thallium.sdvm.registry.ModItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FarmlandBlock;
 import net.minecraft.client.MinecraftClient;
-import net.minecraft.entity.Entity;
-import net.minecraft.item.ItemStack;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -20,9 +17,13 @@ import java.util.Random;
 @Mixin(FarmlandBlock.class)
 public class MixinFarmland
 {
+    @Final
     @Shadow
-    private static IntProperty MOISTURE;
+    public static IntProperty MOISTURE;
 
+    /**
+     * @author Thallium
+     */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random)
     {

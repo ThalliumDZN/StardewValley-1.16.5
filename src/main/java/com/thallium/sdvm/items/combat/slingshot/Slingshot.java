@@ -4,14 +4,12 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.BookItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.Vanishable;
 import net.minecraft.world.World;
 
-import java.awt.print.Book;
 import java.util.function.Predicate;
 
 public class Slingshot extends RangedSlingshot implements Vanishable

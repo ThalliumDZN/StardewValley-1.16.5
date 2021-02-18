@@ -1,11 +1,8 @@
 package com.thallium.sdvm.gui.entity.clint;
 
-import com.thallium.sdvm.StardewValley;
 import com.thallium.sdvm.gui.widgets.WClearButton;
-import com.thallium.sdvm.gui.widgets.wQuestionPanel;
+import com.thallium.sdvm.gui.widgets.WQuestionPanel;
 import com.thallium.sdvm.registry.ModScreens;
-import com.thallium.sdvm.util.cca.MoneyComponent;
-import com.thallium.sdvm.util.cca.MyComponents;
 import io.github.cottonmc.cotton.gui.SyncedGuiDescription;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
@@ -19,7 +16,7 @@ public class ClintGuiDescription extends SyncedGuiDescription
     {
         super(ModScreens.CLINT_SHOP, syncId, playerInventory);
 
-        wQuestionPanel root = new wQuestionPanel();
+        WQuestionPanel root = new WQuestionPanel();
         root.setSize(224, 76);
         setRootPanel(root);
 

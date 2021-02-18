@@ -1,7 +1,7 @@
 package com.thallium.sdvm.gui.entity.marlon;
 
-import com.thallium.sdvm.gui.widgets.wBuyButton;
-import com.thallium.sdvm.gui.widgets.wShopPanel;
+import com.thallium.sdvm.gui.widgets.WBuyButton;
+import com.thallium.sdvm.gui.widgets.WShopPanel;
 import com.thallium.sdvm.registry.ModScreens;
 import com.thallium.sdvm.registry.ModTools;
 import com.thallium.sdvm.registry.ModTrinkets;
@@ -13,7 +13,6 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.LiteralText;
-import net.minecraft.util.Identifier;
 
 public class MarlonGuiDescription extends SyncedGuiDescription
 {
@@ -22,41 +21,41 @@ public class MarlonGuiDescription extends SyncedGuiDescription
         super(ModScreens.MARLON_SHOP, syncId, playerInventory);
 
         // Sell List
-        wBuyButton woodenBlade = new wBuyButton(new ItemIcon(new ItemStack(ModTools.WOODEN_BLADE)), new LiteralText("Wooden Blade"), new LiteralText("100G"));
+        WBuyButton woodenBlade = new WBuyButton(new ItemIcon(new ItemStack(ModTools.WOODEN_BLADE)), new LiteralText("Wooden Blade"), new LiteralText("100G"));
         woodenBlade.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.WOODEN_BLADE)); });
 
-        wBuyButton silverSaber = new wBuyButton(new ItemIcon(new ItemStack(ModTools.SILVER_SABER)), new LiteralText("Silver Saber"), new LiteralText("100G"));
+        WBuyButton silverSaber = new WBuyButton(new ItemIcon(new ItemStack(ModTools.SILVER_SABER)), new LiteralText("Silver Saber"), new LiteralText("100G"));
         silverSaber.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.SILVER_SABER)); });
 
-        wBuyButton pirateSword = new wBuyButton(new ItemIcon(new ItemStack(ModTools.PIRATES_SWORD)), new LiteralText("Pirate's Sword"), new LiteralText("100G"));
+        WBuyButton pirateSword = new WBuyButton(new ItemIcon(new ItemStack(ModTools.PIRATES_SWORD)), new LiteralText("Pirate's Sword"), new LiteralText("100G"));
         pirateSword.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.PIRATES_SWORD)); });
 
-        wBuyButton cutlass = new wBuyButton(new ItemIcon(new ItemStack(ModTools.CUTLASS)), new LiteralText("Cutlass"), new LiteralText("100G"));
+        WBuyButton cutlass = new WBuyButton(new ItemIcon(new ItemStack(ModTools.CUTLASS)), new LiteralText("Cutlass"), new LiteralText("100G"));
         cutlass.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.CUTLASS)); });
 
-        wBuyButton claymore = new wBuyButton(new ItemIcon(new ItemStack(ModTools.CLAYMORE)), new LiteralText("Claymore"), new LiteralText("100G"));
+        WBuyButton claymore = new WBuyButton(new ItemIcon(new ItemStack(ModTools.CLAYMORE)), new LiteralText("Claymore"), new LiteralText("100G"));
         claymore.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.CLAYMORE)); });
 
-        wBuyButton templarsBlade = new wBuyButton(new ItemIcon(new ItemStack(ModTools.TEMPLARS_BLADE)), new LiteralText("Templar's Blade"), new LiteralText("100G"));
+        WBuyButton templarsBlade = new WBuyButton(new ItemIcon(new ItemStack(ModTools.TEMPLARS_BLADE)), new LiteralText("Templar's Blade"), new LiteralText("100G"));
         templarsBlade.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.TEMPLARS_BLADE)); });
 
-        wBuyButton boneSword = new wBuyButton(new ItemIcon(new ItemStack(ModTools.BONE_SWORD)), new LiteralText("Bone Sword"), new LiteralText("100G"));
+        WBuyButton boneSword = new WBuyButton(new ItemIcon(new ItemStack(ModTools.BONE_SWORD)), new LiteralText("Bone Sword"), new LiteralText("100G"));
         boneSword.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.BONE_SWORD)); });
 
-        wBuyButton steelFalchion = new wBuyButton(new ItemIcon(new ItemStack(ModTools.STEEL_FALCHION)), new LiteralText("Steel Falchion"), new LiteralText("100G"));
+        WBuyButton steelFalchion = new WBuyButton(new ItemIcon(new ItemStack(ModTools.STEEL_FALCHION)), new LiteralText("Steel Falchion"), new LiteralText("100G"));
         steelFalchion.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.STEEL_FALCHION)); });
 
-        wBuyButton lavaKatana = new wBuyButton(new ItemIcon(new ItemStack(ModTools.LAVA_KATANA)), new LiteralText("Lava Katana"), new LiteralText("100G"));
+        WBuyButton lavaKatana = new WBuyButton(new ItemIcon(new ItemStack(ModTools.LAVA_KATANA)), new LiteralText("Lava Katana"), new LiteralText("100G"));
         lavaKatana.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.LAVA_KATANA)); });
 
-        wBuyButton galaxySword = new wBuyButton(new ItemIcon(new ItemStack(ModTools.GALAXY_SWORD)), new LiteralText("Galaxy Sword"), new LiteralText("100G"));
+        WBuyButton galaxySword = new WBuyButton(new ItemIcon(new ItemStack(ModTools.GALAXY_SWORD)), new LiteralText("Galaxy Sword"), new LiteralText("100G"));
         galaxySword.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.GALAXY_SWORD)); });
 
-        wBuyButton rubyRing = new wBuyButton(new ItemIcon(new ItemStack(ModTrinkets.rubyRing)), new LiteralText("Ruby Ring"), new LiteralText("100G"));
+        WBuyButton rubyRing = new WBuyButton(new ItemIcon(new ItemStack(ModTrinkets.rubyRing)), new LiteralText("Ruby Ring"), new LiteralText("100G"));
         rubyRing.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTrinkets.rubyRing)); });
 
         // LibGui Info
-        wShopPanel root = new wShopPanel();
+        WShopPanel root = new WShopPanel();
         root.setSize(260, 105);
         setRootPanel(root);
         //root.setBackgroundPainter(PANEL);

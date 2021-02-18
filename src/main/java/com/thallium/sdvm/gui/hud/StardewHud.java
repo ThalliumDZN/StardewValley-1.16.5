@@ -1,28 +1,18 @@
 package com.thallium.sdvm.gui.hud;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.thallium.sdvm.StardewValley;
-import com.thallium.sdvm.util.cca.IMoneyComponent;
-import com.thallium.sdvm.util.cca.MoneyComponent;
 import com.thallium.sdvm.util.cca.MyComponents;
-import dev.onyxstudios.cca.api.v3.component.ComponentKey;
-import dev.onyxstudios.cca.api.v3.entity.EntityComponentFactoryRegistry;
 import io.github.cottonmc.cotton.gui.widget.WDynamicLabel;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
-import nerdhub.cardinal.components.api.ComponentType;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.Identifier;
-import net.prismatic.monetarysolutions.MonetarySolutionsInitializer;
-import net.prismatic.monetarysolutions.api.Money;
-import net.prismatic.monetarysolutions.components.PlayerMoneyComponent;
 
 import java.util.Random;
 

@@ -17,7 +17,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
-public class wBuyButton extends WWidget
+public class WBuyButton extends WWidget
 {
     private Text name;
     private Text price;
@@ -29,7 +29,7 @@ public class wBuyButton extends WWidget
     private io.github.cottonmc.cotton.gui.widget.icon.Icon icon;
     private static final Identifier shopButton = new Identifier("sdvm", "textures/gui/shop_button.png");
 
-    public wBuyButton(Icon icon, Text label, Text price)
+    public WBuyButton(Icon icon, Text label, Text price)
     {
         this.alignment = HorizontalAlignment.CENTER;
         this.icon = null;
@@ -111,7 +111,7 @@ public class wBuyButton extends WWidget
         return this.onClick;
     }
 
-    public wBuyButton setOnClick(@Nullable Runnable onClick)
+    public WBuyButton setOnClick(@Nullable Runnable onClick)
     {
         this.onClick = onClick;
         return this;
@@ -123,7 +123,7 @@ public class wBuyButton extends WWidget
     }
 
 
-    public wBuyButton setEnabled(boolean enabled) {
+    public WBuyButton setEnabled(boolean enabled) {
         this.enabled = enabled;
         return this;
     }
@@ -138,12 +138,12 @@ public class wBuyButton extends WWidget
         return this.price;
     }
 
-    public wBuyButton setName(Text name) {
+    public WBuyButton setName(Text name) {
         this.name = name;
         return this;
     }
 
-    public wBuyButton setPrice(Text price)
+    public WBuyButton setPrice(Text price)
     {
         this.price = price;
         return this;
@@ -154,7 +154,7 @@ public class wBuyButton extends WWidget
         return this.alignment;
     }
 
-    public wBuyButton setAlignment(HorizontalAlignment alignment) {
+    public WBuyButton setAlignment(HorizontalAlignment alignment) {
         this.alignment = alignment;
         return this;
     }
@@ -164,7 +164,7 @@ public class wBuyButton extends WWidget
         return this.icon;
     }
 
-    public wBuyButton setIcon(Icon icon)
+    public WBuyButton setIcon(Icon icon)
     {
         this.icon = icon;
         return this;
@@ -175,7 +175,7 @@ public class wBuyButton extends WWidget
     {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        wBuyButton buyWidget = (wBuyButton) o;
+        WBuyButton buyWidget = (WBuyButton) o;
         return enabled == buyWidget.enabled &&
                 Objects.equals(name, buyWidget.name) &&
                 Objects.equals(price, buyWidget.price) &&

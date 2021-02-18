@@ -1,6 +1,5 @@
 package com.thallium.sdvm.entity.villagers.clint;
 
-import com.thallium.sdvm.entity.villagers.marlon.MarlonEntity;
 import net.minecraft.client.model.ModelPart;
 import net.minecraft.client.render.VertexConsumer;
 import net.minecraft.client.render.entity.model.EntityModel;

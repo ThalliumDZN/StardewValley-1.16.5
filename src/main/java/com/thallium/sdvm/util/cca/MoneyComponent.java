@@ -1,23 +1,11 @@
 package com.thallium.sdvm.util.cca;
 
-import com.thallium.sdvm.StardewValley;
-import com.thallium.sdvm.registry.ModNetworking;
-import com.thallium.sdvm.util.networking.CurrencyPacketUtil;
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
-import io.netty.buffer.ByteBuf;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
-import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
-import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import sun.util.resources.cldr.ta.CurrencyNames_ta;
 
 public class MoneyComponent implements IMoneyComponent, AutoSyncedComponent
 {
@@ -50,21 +38,17 @@ public class MoneyComponent implements IMoneyComponent, AutoSyncedComponent
     }
 
     @Override
-    public void incrementValue()
-    {
-        this.value++;
-        PacketByteBuf buf = PacketByteBufs.create();
-        buf.writeVarInt(value);
-        CurrencyPacketUtil.sendCurrencyMessage();
-        System.out.println("incremented value correctly");
-        //MyComponents.MONEY.sync(MinecraftClient.getInstance().player);
-    }
-
-    @Override
     public void setValue(int amount)
     {
         this.value = amount;
         System.out.println("set value correctly");
+        MyComponents.MONEY.sync(ComponentProvider.fromEntity(player));
+    }
+
+    @Override
+    public void addMoney(int amount) {
+        value += amount;
+        MyComponents.MONEY.sync(ComponentProvider.fromEntity(player));
     }
 
     /*

@@ -1,7 +1,5 @@
 package com.thallium.sdvm.items.watering;
 
-import net.minecraft.item.Item;
-
 public class WateringCan extends WateringCanBase
 {
     public WateringCan(Settings settings)
