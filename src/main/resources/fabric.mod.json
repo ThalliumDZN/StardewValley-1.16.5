@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "sdvm",
+  "version": "${version}",
+
+  "name": "Star dew Valley Mod",
+  "description": "A stardew valley mod",
+  "authors": [
+    "Thallium"
+  ],
+  "contact": {
+  },
+
+  "license": "GNU-LGPL2.1",
+  "icon": "assets/sdvm/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.thallium.sdvm.StardewValley"
+    ],
+    "client": [
+      "com.thallium.sdvm.StardewValleyClient"
+    ],
+    "cardinal-components-entity": [
+      "com.thallium.sdvm.util.cca.MyComponents"
+    ]
+  },
+  "mixins": [
+    "sdvm.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "custom": {
+    "cardinal-components": [
+      "sdvm:money"
+    ]
+  }
+}
