@@ -14,6 +14,17 @@ public class CurrencyUtils {
     public static void addMoney(int i) {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
         buf.writeInt(i);
-        ClientPlayNetworking.send(CurrencyNetworking.MONEY_ADD, buf);
+        ClientPlayNetworking.send(CurrencyNetworking.ADD_MONEY, buf);
+    }
+
+    /**
+     * Sets the players money to the given value
+     * Client to server
+     * @param i New amount of money
+     */
+    public static void setMoney(int i) {
+        PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
+        buf.writeInt(i);
+        ClientPlayNetworking.send(CurrencyNetworking.SET_MONEY, buf);
     }
 }

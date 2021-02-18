@@ -62,7 +62,7 @@ public class StardewHud extends WWidget
 
         //Money Configuration
         //String currencyDisplay = new Currency().getMoney().toString();
-        int money = MyComponents.MONEY.get(mc.player).getValue();
+        int money = MyComponents.MONEY.get(mc.player).getMoney();
         WDynamicLabel label = new WDynamicLabel(() -> String.valueOf(money));
 
         if (MinecraftClient.getInstance().world.getRegistryKey() == SuperPositionHandler.getNetherKey() || MinecraftClient.getInstance().world.getRegistryKey() == SuperPositionHandler.getEndKey())
