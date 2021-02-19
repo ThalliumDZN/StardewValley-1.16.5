@@ -2,7 +2,6 @@ package com.thallium.sdvm.util.networking;
 
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketByteBuf;
 
@@ -49,9 +48,8 @@ public class CurrencyUtils {
         ClientPlayNetworking.send(CurrencyNetworking.SET_MONEY, buf);
     }
 
-    public static void purchase(ItemStack item, int cost, int i) {
+    public static void purchase(ItemStack item, int cost) {
         PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
-        buf.writeInt(i);
         buf.writeInt(cost);
         buf.writeItemStack(item);
         ClientPlayNetworking.send(CurrencyNetworking.PURCHASE, buf);
