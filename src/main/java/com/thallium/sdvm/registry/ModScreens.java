@@ -33,7 +33,7 @@ public class ModScreens
         VendingBlockScreenHandler.TYPE = ScreenHandlerRegistry.registerSimple(new Identifier(StardewValley.Mod_ID, "vending_block"), VendingBlockScreenHandler::new);
 
         //Villager Guis
-        MARLON_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("marlon_block"), (syncId, inventory) -> new MarlonGuiDescription(syncId, inventory, player));
+        MARLON_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("marlon_block"), (syncId, inventory) -> new MarlonGuiDescription(syncId, inventory));
         CLINT_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("clint_block"), (syncId, inventory) -> new ClintGuiDescription(syncId, inventory, player));
         VILLAGER_POPUP = ScreenHandlerRegistry.registerSimple(StardewValley.id("villager_popup"), (syncId, inventory) -> new VillagerPopupDescription(syncId, inventory, ScreenHandlerContext.EMPTY, player));
 

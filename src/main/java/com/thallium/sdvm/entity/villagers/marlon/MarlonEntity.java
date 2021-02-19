@@ -70,6 +70,6 @@ public class MarlonEntity extends PassiveEntity implements NamedScreenHandlerFac
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player)
     {
-        return new MarlonGuiDescription(syncId, inv, player);
+        return new MarlonGuiDescription(syncId, inv);
     }
 }
