@@ -76,7 +76,7 @@ public class WClearButton extends WWidget
             if (this.onClick != null)
             {
                 //Delete this later, was only added in v0.1 for testing reasons
-                CurrencyUtils.addMoney(1);
+                CurrencyUtils.addMoney(250);
 
                 this.onClick.run();
             }

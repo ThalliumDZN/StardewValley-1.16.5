@@ -2,18 +2,14 @@ package com.thallium.sdvm.gui.entity.marlon;
 
 import com.thallium.sdvm.gui.widgets.WBuyButton;
 import com.thallium.sdvm.gui.widgets.WShopPanel;
-import com.thallium.sdvm.registry.ModItems;
 import com.thallium.sdvm.registry.ModScreens;
 import com.thallium.sdvm.registry.ModTools;
 import com.thallium.sdvm.registry.ModTrinkets;
-import com.thallium.sdvm.util.cca.MyComponents;
 import com.thallium.sdvm.util.networking.CurrencyUtils;
-import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import io.github.cottonmc.cotton.gui.SyncedGuiDescription;
 import io.github.cottonmc.cotton.gui.widget.*;
 import io.github.cottonmc.cotton.gui.widget.icon.ItemIcon;
 import net.fabricmc.fabric.api.util.TriState;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
@@ -21,13 +17,13 @@ import net.minecraft.text.LiteralText;
 
 public class MarlonGuiDescription extends SyncedGuiDescription
 {
-    public MarlonGuiDescription(int syncId, PlayerInventory playerInventory, PlayerEntity player)
+    public MarlonGuiDescription(int syncId, PlayerInventory playerInventory)
     {
         super(ModScreens.MARLON_SHOP, syncId, playerInventory);
 
         // Sell List
         WBuyButton woodenBlade = new WBuyButton(new ItemIcon(new ItemStack(ModTools.WOODEN_BLADE)), new LiteralText("Wooden Blade"), 250);
-        woodenBlade.setOnClick(() -> { CurrencyUtils.purchase(new ItemStack(ModTools.WOODEN_BLADE), 250, MyComponents.MONEY.get(player).getMoney());});
+        woodenBlade.setOnClick(() -> { CurrencyUtils.purchase(new ItemStack(ModTools.WOODEN_BLADE), woodenBlade.costPer);});
 
         WBuyButton silverSaber = new WBuyButton(new ItemIcon(new ItemStack(ModTools.SILVER_SABER)), new LiteralText("Silver Saber"), 750);
         silverSaber.setOnClick(() -> { playerInventory.insertStack(new ItemStack(ModTools.SILVER_SABER)); });

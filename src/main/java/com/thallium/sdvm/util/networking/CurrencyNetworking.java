@@ -9,8 +9,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 
-public class CurrencyNetworking
-{
+public class CurrencyNetworking {
     public static Identifier ADD_MONEY = StardewValley.id("add_money"); // Adds money to a player by a given value
     public static Identifier SUBTRACT_MONEY = StardewValley.id("subtract_money"); // Subtracts a players money
     public static Identifier MULTIPLY_MONEY = StardewValley.id("multiply_money"); // Multiplies a players money
@@ -27,8 +26,7 @@ public class CurrencyNetworking
         registerPackets();
     }
 
-    private static void registerPackets()
-    {
+    private static void registerPackets() {
         ServerPlayNetworking.registerGlobalReceiver(ADD_MONEY, (minecraftServer, serverPlayerEntity, serverPlayNetworkHandler, packetByteBuf, packetSender) -> {
             int money = packetByteBuf.readInt();
             minecraftServer.execute(() -> {
@@ -80,12 +78,11 @@ public class CurrencyNetworking
         });
 
         ServerPlayNetworking.registerGlobalReceiver(PURCHASE, (minecraftServer, serverPlayerEntity, serverPlayNetworkHandler, packetByteBuf, packetSender) -> {
-            int money = packetByteBuf.readInt();
             int cost = packetByteBuf.readInt();
             ItemStack item = packetByteBuf.readItemStack();
             minecraftServer.execute(() ->
             {
-                MyComponents.MONEY.get(ComponentProvider.fromEntity(serverPlayerEntity)).purchase(item, cost, money);
+                MyComponents.MONEY.get(ComponentProvider.fromEntity(serverPlayerEntity)).purchase(item, cost);
             });
         });
     }
