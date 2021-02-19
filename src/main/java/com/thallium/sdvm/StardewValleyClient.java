@@ -1,5 +1,8 @@
 package com.thallium.sdvm;
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
+import com.thallium.sdvm.blocks.keg.CurrencyBookGuiDescription;
+import com.thallium.sdvm.blocks.keg.CurrencyBookScreen;
 import com.thallium.sdvm.entity.villagers.clint.ClintEntityRenderer;
 import com.thallium.sdvm.gui.entity.clint.ClintGuiDescription;
 import com.thallium.sdvm.gui.entity.clint.ClintGuiScreen;
@@ -67,9 +70,12 @@ public class StardewValleyClient implements ClientModInitializer
             return new ClintEntityRenderer(dispatcher);
         });
 
+
+
         //Screen Registry
         ScreenRegistry.<MarlonGuiDescription, MarlonGuiScreen>register(ModScreens.MARLON_SHOP, (gui, inventory, title) -> new MarlonGuiScreen(gui, inventory.player, title));
         ScreenRegistry.<ClintGuiDescription, ClintGuiScreen>register(ModScreens.CLINT_SHOP, (gui, inventory, title) -> new ClintGuiScreen(gui, inventory.player, title));
         ScreenRegistry.<BackpackGuiDescription, BackpackScreen>register(ModScreens.BACKPACK, (gui, inventory, title) -> new BackpackScreen(gui, inventory.player, title));
+        ScreenRegistry.<CurrencyBookGuiDescription, CurrencyBookScreen>register(ModScreens.CURRENCY_BOOK, (gui, inventory, title) -> new CurrencyBookScreen(gui, inventory.player, title));
     }
 }

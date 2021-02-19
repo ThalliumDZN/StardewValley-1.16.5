@@ -1,5 +1,7 @@
 package com.thallium.sdvm.gui.widgets;
 
+import com.thallium.sdvm.util.cca.MyComponents;
+import com.thallium.sdvm.util.networking.CurrencyUtils;
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
@@ -20,7 +22,7 @@ import java.util.Objects;
 public class WBuyButton extends WWidget
 {
     private Text name;
-    private Text price;
+    public int costPer;
     private boolean enabled = true;
     protected HorizontalAlignment alignment;
     @Nullable
@@ -29,13 +31,13 @@ public class WBuyButton extends WWidget
     private io.github.cottonmc.cotton.gui.widget.icon.Icon icon;
     private static final Identifier shopButton = new Identifier("sdvm", "textures/gui/shop_button.png");
 
-    public WBuyButton(Icon icon, Text label, Text price)
+    public WBuyButton(Icon icon, Text label, int costPer)
     {
         this.alignment = HorizontalAlignment.CENTER;
         this.icon = null;
         this.icon = icon;
         this.name = label;
-        this.price = price;
+        this.costPer = costPer;
     }
 
     @Override
@@ -63,11 +65,16 @@ public class WBuyButton extends WWidget
             name.paint(matrices, x+25, y+9, 0, 0);
         }
 
+        /*
         if (this.price != null)
         {
             WLabel price = new WLabel(this.price);
             price.paint(matrices, x+209, y+9, 0, 0);
         }
+        */
+
+        WLabel costPer = new WLabel(String.valueOf(this.costPer));
+        costPer.paint(matrices, x+209, y+9, 0, 0);
     }
 
     @Override
@@ -91,6 +98,7 @@ public class WBuyButton extends WWidget
             MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             if (this.onClick != null)
             {
+                //MyComponents.MONEY.get(MinecraftClient.getInstance().player).subtractMoney(costPer);
                 this.onClick.run();
             }
         }
@@ -133,25 +141,9 @@ public class WBuyButton extends WWidget
         return this.name;
     }
 
-    public Text getPrice()
-    {
-        return this.price;
-    }
-
     public WBuyButton setName(Text name) {
         this.name = name;
         return this;
-    }
-
-    public WBuyButton setPrice(Text price)
-    {
-        this.price = price;
-        return this;
-    }
-
-    public HorizontalAlignment getAlignment()
-    {
-        return this.alignment;
     }
 
     public WBuyButton setAlignment(HorizontalAlignment alignment) {
@@ -178,7 +170,7 @@ public class WBuyButton extends WWidget
         WBuyButton buyWidget = (WBuyButton) o;
         return enabled == buyWidget.enabled &&
                 Objects.equals(name, buyWidget.name) &&
-                Objects.equals(price, buyWidget.price) &&
+                Objects.equals(costPer, buyWidget.costPer) &&
                 alignment == buyWidget.alignment &&
                 Objects.equals(onClick, buyWidget.onClick) &&
                 Objects.equals(icon, buyWidget.icon);
@@ -187,6 +179,6 @@ public class WBuyButton extends WWidget
     @Override
     public int hashCode()
     {
-        return Objects.hash(name, price, enabled, alignment, onClick, icon);
+        return Objects.hash(name, costPer, enabled, alignment, onClick, icon);
     }
 }

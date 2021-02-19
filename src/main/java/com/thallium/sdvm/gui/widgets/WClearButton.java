@@ -26,10 +26,7 @@ public class WClearButton extends WWidget
     protected HorizontalAlignment alignment;
     @Nullable
     private Runnable onClick;
-
     public PlayerEntity player;
-    public ServerPlayerEntity serverPlayer;
-    public PacketByteBuf buf = PacketByteBufs.create();
 
     public WClearButton(Text textField)
     {
@@ -78,9 +75,8 @@ public class WClearButton extends WWidget
             MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             if (this.onClick != null)
             {
-                //MyComponents.MONEY.maybeGet(MinecraftClient.getInstance().player).ifPresent(IMoneyComponent::incrementValue);
-               CurrencyUtils.addMoney(1);
-                //ServerPlayNetworking.send(serverPlayer, CurrencyPacketUtil.CURRENCY_C2S, PacketByteBufs.empty());
+                //Delete this later, was only added in v0.1 for testing reasons
+                CurrencyUtils.addMoney(1);
 
                 this.onClick.run();
             }

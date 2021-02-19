@@ -1,6 +1,7 @@
 package com.thallium.sdvm.registry;
 
 import com.thallium.sdvm.StardewValley;
+import com.thallium.sdvm.blocks.keg.CurrencyBookGuiDescription;
 import com.thallium.sdvm.gui.entity.clint.ClintGuiDescription;
 import com.thallium.sdvm.gui.entity.marlon.MarlonGuiDescription;
 import com.thallium.sdvm.gui.popup.VillagerPopupDescription;
@@ -19,6 +20,8 @@ public class ModScreens
 
     public static ScreenHandlerType<VillagerPopupDescription> VILLAGER_POPUP;
 
+    public static ScreenHandlerType<CurrencyBookGuiDescription> CURRENCY_BOOK;
+
     public static ScreenHandlerType<BackpackGuiDescription> BACKPACK;
 
     private static PlayerEntity player;
@@ -33,6 +36,8 @@ public class ModScreens
         MARLON_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("marlon_block"), (syncId, inventory) -> new MarlonGuiDescription(syncId, inventory, player));
         CLINT_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("clint_block"), (syncId, inventory) -> new ClintGuiDescription(syncId, inventory, player));
         VILLAGER_POPUP = ScreenHandlerRegistry.registerSimple(StardewValley.id("villager_popup"), (syncId, inventory) -> new VillagerPopupDescription(syncId, inventory, ScreenHandlerContext.EMPTY, player));
+
+        CURRENCY_BOOK = ScreenHandlerRegistry.registerSimple(StardewValley.id("currency_book"), (syncId, inventory) -> new CurrencyBookGuiDescription(syncId, inventory, player));
 
         BACKPACK = ScreenHandlerRegistry.registerSimple(StardewValley.id("backpack"), (syncId, inventory) -> new BackpackGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
     }
