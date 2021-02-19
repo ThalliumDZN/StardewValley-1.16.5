@@ -6,7 +6,7 @@ This is a large mod for Minecraft Java Edition that practically implements every
 
 ## Contributors
 
-ThalliumDZN - Base Modder
+ThalliumDZN - General Modding
 
 AshIndigo - Currency System and Packet Handling
 
