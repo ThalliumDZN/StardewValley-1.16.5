@@ -4,6 +4,14 @@
 
 This is a large mod for Minecraft Java Edition that practically implements everything from the video game Stardew Valley into our beloved Minecraft worlds!
 
+## Contributors
+
+ThalliumDZN - Base Modder
+
+AshIndigo - Currency System and Packet Handling
+
+Pyrofab - Packet Handling
+
 ## Setup
 
 For setup instructions please see the [fabric wiki page](https://fabricmc.net/wiki/tutorial:setup) that relates to the IDE that you are using.
