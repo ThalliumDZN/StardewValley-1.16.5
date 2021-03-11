@@ -45,5 +45,7 @@
 
   "item.sdvm.cave_carrot": "Cave Carrot",
 
-  "itemGroup.sdvm.tool_group": "Stardew Valley Tools"
+  "itemGroup.sdvm.tool_group": "Stardew Valley Tools",
+
+  "menu.custom_button": "1"
 }
