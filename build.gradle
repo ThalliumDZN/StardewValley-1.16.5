@@ -38,6 +38,10 @@ repositories {
 		url = "https://dl.bintray.com/ladysnake/libs"
 	}
 
+	maven {
+		url = "https://maven.theillusivec4.top"
+	}
+
 	jcenter()
 }
 
@@ -63,6 +67,9 @@ dependencies {
 	modImplementation "io.github.onyxstudios:Cardinal-Components-API:2.7.10"
 	// Includes Cardinal Components API as a Jar-in-Jar dependency (optional)
 	//include "io.github.onyxstudios.Cardinal-Components-API:<MODULE>:<VERSION>"
+
+	//Time Functionality API
+	modImplementation "top.theillusivec4.somnus:somnus-fabric:0.0.10-1.16.4"
 }
 
 processResources {
