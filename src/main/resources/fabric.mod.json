@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
   "id": "sdvm",
-  "version": "${version}",
+  "version": "0.1",
 
   "name": "Stardew Valley Mod",
   "description": "A stardew valley mod",
   "authors": [
     "Thallium",
     "AshIndigo",
-    "PyroFab"
+    "Pyrofab"
   ],
   "contact": {
   },
@@ -39,7 +39,8 @@
   },
   "custom": {
     "cardinal-components": [
-      "sdvm:money"
+      "sdvm:money",
+      "sdvm:date"
     ]
   }
 }

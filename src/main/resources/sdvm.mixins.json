@@ -4,7 +4,10 @@
   "package": "com.thallium.sdvm.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinFarmland",
+    "MixinButton",
+    "MixinDate",
+    "MixinSeason",
+    "MixinTitleScreen",
     "MixinTradeOffer"
   ],
   "client": [
