@@ -1,7 +1,5 @@
 package com.thallium.sdvm.gui.widgets;
 
-import com.thallium.sdvm.util.cca.MyComponents;
-import com.thallium.sdvm.util.networking.CurrencyUtils;
 import io.github.cottonmc.cotton.gui.client.ScreenDrawing;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
@@ -45,11 +43,8 @@ public class WBuyButton extends WWidget
     public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY)
     {
         boolean hovered = mouseX >= 0 && mouseY >= 0 && mouseX < this.getWidth() && mouseY < this.getHeight();
-        int state = 1;
         if (!this.enabled) {
-            state = 0;
         } else if (hovered || this.isFocused()) {
-            state = 2;
         }
 
         ScreenDrawing.texturedRect(x, y, 252, 25, shopButton, 0xFFFFFFFF);
@@ -98,7 +93,6 @@ public class WBuyButton extends WWidget
             MinecraftClient.getInstance().getSoundManager().play(PositionedSoundInstance.master(SoundEvents.UI_BUTTON_CLICK, 1.0F));
             if (this.onClick != null)
             {
-                //MyComponents.MONEY.get(MinecraftClient.getInstance().player).subtractMoney(costPer);
                 this.onClick.run();
             }
         }

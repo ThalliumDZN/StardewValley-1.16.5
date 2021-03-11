@@ -1,18 +1,15 @@
 package com.thallium.sdvm.gui.widgets;
 
-import com.thallium.sdvm.util.networking.CurrencyUtils;
+import com.thallium.sdvm.util.networking.money.CurrencyUtils;
 import io.github.cottonmc.cotton.gui.widget.WLabel;
 import io.github.cottonmc.cotton.gui.widget.WWidget;
 import io.github.cottonmc.cotton.gui.widget.data.HorizontalAlignment;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.sound.PositionedSoundInstance;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.network.PacketByteBuf;
-import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.text.Text;
 import org.jetbrains.annotations.Nullable;
@@ -39,11 +36,9 @@ public class WClearButton extends WWidget
     public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY)
     {
         boolean hovered = mouseX >= 0 && mouseY >= 0 && mouseX < this.getWidth() && mouseY < this.getHeight();
-        int state = 1;
         if (!this.enabled) {
-            state = 0;
-        } else if (hovered || this.isFocused()) {
-            state = 2;
+        } else if (hovered || this.isFocused())
+        {
         }
 
         if (this.textField != null)

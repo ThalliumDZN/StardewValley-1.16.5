@@ -38,6 +38,6 @@ public class Backpack extends Item implements NamedScreenHandlerFactory
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player)
     {
-        return new BackpackGuiDescription(syncId, inv, ScreenHandlerContext.EMPTY);
+        return new BackpackGui(syncId, inv, ScreenHandlerContext.EMPTY);
     }
 }

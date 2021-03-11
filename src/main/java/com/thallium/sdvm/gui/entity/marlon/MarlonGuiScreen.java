@@ -4,9 +4,9 @@ import io.github.cottonmc.cotton.gui.client.CottonInventoryScreen;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
 
-public class MarlonGuiScreen extends CottonInventoryScreen<MarlonGuiDescription>
+public class MarlonGuiScreen extends CottonInventoryScreen<MarlonGui>
 {
-    public MarlonGuiScreen(MarlonGuiDescription gui, PlayerEntity player, Text title)
+    public MarlonGuiScreen(MarlonGui gui, PlayerEntity player, Text title)
     {
         super(gui, player, title);
     }

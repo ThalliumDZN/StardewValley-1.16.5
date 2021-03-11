@@ -1,6 +1,6 @@
 package com.thallium.sdvm.entity.villagers.marlon;
 
-import com.thallium.sdvm.gui.entity.marlon.MarlonGuiDescription;
+import com.thallium.sdvm.gui.entity.marlon.MarlonGui;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.LookAtEntityGoal;
 import net.minecraft.entity.passive.PassiveEntity;
@@ -14,6 +14,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
+import top.theillusivec4.somnus.api.PlayerSleepEvents;
 
 public class MarlonEntity extends PassiveEntity implements NamedScreenHandlerFactory
 {
@@ -25,8 +26,15 @@ public class MarlonEntity extends PassiveEntity implements NamedScreenHandlerFac
     @Override
     public ActionResult interactAt(PlayerEntity player, Vec3d hitPos, Hand hand)
     {
-        player.openHandledScreen(this);
-        return ActionResult.SUCCESS;
+        boolean night = PlayerSleepEvents.canSleepNow(player, getBlockPos());
+
+        if (night)
+        {
+            return ActionResult.FAIL;
+        } else{
+            player.openHandledScreen(this);
+            return ActionResult.SUCCESS;
+        }
     }
 
     @Override
@@ -70,6 +78,6 @@ public class MarlonEntity extends PassiveEntity implements NamedScreenHandlerFac
     @Override
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player)
     {
-        return new MarlonGuiDescription(syncId, inv);
+        return new MarlonGui(syncId, inv);
     }
 }

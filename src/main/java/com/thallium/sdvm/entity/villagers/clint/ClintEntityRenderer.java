@@ -14,6 +14,6 @@ public class ClintEntityRenderer extends MobEntityRenderer<ClintEntity, ClintEnt
     @Override
     public Identifier getTexture(ClintEntity entity)
     {
-        return new Identifier("sdvm", "textures/entity/marlon/marlon.png");
+        return new Identifier("sdvm", "textures/entity/clint/clint.png");
     }
 }

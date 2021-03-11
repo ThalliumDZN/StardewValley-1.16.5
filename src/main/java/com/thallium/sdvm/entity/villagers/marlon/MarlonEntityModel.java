@@ -7,41 +7,51 @@ import net.minecraft.client.util.math.MatrixStack;
 
 public class MarlonEntityModel extends EntityModel<MarlonEntity>
 {
-    private final ModelPart main;
-    private final ModelPart head;
-    private final ModelPart arms;
-    private final ModelPart body;
-    private final ModelPart legs;
+    private final ModelPart Head;
+    private final ModelPart Body;
+    private final ModelPart RightArm;
+    private final ModelPart LeftArm;
+    private final ModelPart RightLeg;
+    private final ModelPart LeftLeg;
 
     public MarlonEntityModel()
     {
-        textureWidth = 64;
-        textureHeight = 64;
-        main = new ModelPart(this);
-        main.setPivot(0.0F, 24.0F, -1.0F);
+        textureWidth = 128;
+        textureHeight = 128;
+        Head = new ModelPart(this);
+        Head.setPivot(0.0F, 0.0F, 0.0F);
+        setRotationAngle(Head, 0.0F, 0.0F, 0.0F);
+        Head.setTextureOffset(0, 16).addCuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+        Head.setTextureOffset(0, 0).addCuboid(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.5F, false);
 
+        Body = new ModelPart(this);
+        Body.setPivot(0.0F, 0.0F, 0.0F);
+        Body.setTextureOffset(28, 28).addCuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.25F, false);
+        Body.setTextureOffset(0, 32).addCuboid(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F, 0.0F, false);
 
-        head = new ModelPart(this);
-        head.setPivot(0.0F, -3.0F, 0.0F);
-        main.addChild(head);
-        head.setTextureOffset(0, 0).addCuboid(-4.0F, -29.0F, -3.0F, 8.0F, 8.0F, 8.0F, 0.0F, false);
+        RightArm = new ModelPart(this);
+        RightArm.setPivot(-5.0F, 2.0F, 0.0F);
+        setRotationAngle(RightArm, 0.0F, 0.0F, 0.0F);
+        RightArm.setTextureOffset(56, 0).addCuboid(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+        RightArm.setTextureOffset(52, 28).addCuboid(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F, false);
 
-        arms = new ModelPart(this);
-        arms.setPivot(2.0F, -12.0F, 1.0F);
-        main.addChild(arms);
-        arms.setTextureOffset(24, 24).addCuboid(-10.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
-        arms.setTextureOffset(0, 32).addCuboid(2.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+        LeftArm = new ModelPart(this);
+        LeftArm.setPivot(5.0F, 2.0F, 0.0F);
+        setRotationAngle(LeftArm, 0.0F, 0.0F, 0.0F);
+        LeftArm.setTextureOffset(52, 52).addCuboid(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+        LeftArm.setTextureOffset(0, 48).addCuboid(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F, false);
 
-        body = new ModelPart(this);
-        body.setPivot(0.0F, 0.0F, 0.0F);
-        main.addChild(body);
-        body.setTextureOffset(0, 16).addCuboid(-4.0F, -24.0F, -1.0F, 8.0F, 12.0F, 4.0F, 0.0F, false);
+        RightLeg = new ModelPart(this);
+        RightLeg.setPivot(-1.9F, 12.0F, 0.0F);
+        setRotationAngle(RightLeg, 0.0F, 0.0F, 0.0F);
+        RightLeg.setTextureOffset(44, 12).addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+        RightLeg.setTextureOffset(36, 44).addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F, false);
 
-        legs = new ModelPart(this);
-        legs.setPivot(3.0F, 0.0F, 1.0F);
-        main.addChild(legs);
-        legs.setTextureOffset(36, 36).addCuboid(-7.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
-        legs.setTextureOffset(32, 0).addCuboid(-3.0F, -12.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+        LeftLeg = new ModelPart(this);
+        LeftLeg.setPivot(1.9F, 12.0F, 0.0F);
+        setRotationAngle(LeftLeg, 0.0F, 0.0F, 0.0F);
+        LeftLeg.setTextureOffset(20, 44).addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.0F, false);
+        LeftLeg.setTextureOffset(32, 0).addCuboid(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F, 0.25F, false);
     }
 
     @Override
@@ -51,9 +61,14 @@ public class MarlonEntityModel extends EntityModel<MarlonEntity>
     }
 
     @Override
-    public void render(MatrixStack matrices, VertexConsumer vertices, int light, int overlay, float red, float green, float blue, float alpha)
+    public void render(MatrixStack matrixStack, VertexConsumer buffer, int packedLight, int packedOverlay, float red, float green, float blue, float alpha)
     {
-        main.render(matrices, vertices, light, overlay);
+        Head.render(matrixStack, buffer, packedLight, packedOverlay);
+        Body.render(matrixStack, buffer, packedLight, packedOverlay);
+        RightArm.render(matrixStack, buffer, packedLight, packedOverlay);
+        LeftArm.render(matrixStack, buffer, packedLight, packedOverlay);
+        RightLeg.render(matrixStack, buffer, packedLight, packedOverlay);
+        LeftLeg.render(matrixStack, buffer, packedLight, packedOverlay);
     }
 
     public void setRotationAngle(ModelPart main, float x, float y, float z)
