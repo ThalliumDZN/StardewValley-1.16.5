@@ -1,14 +1,22 @@
 package com.thallium.sdvm;
 
+import com.thallium.sdvm.commands.SeasonCommands;
 import com.thallium.sdvm.registry.*;
-import com.thallium.sdvm.util.networking.CurrencyNetworking;
+import com.thallium.sdvm.util.networking.date.DateNetworking;
+import com.thallium.sdvm.util.networking.money.CurrencyNetworking;
+import com.thallium.sdvm.util.seasons.SeasonList;
 import com.thallium.sdvm.village.MarlonVillagerProfession;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.World;
 
 public class StardewValley implements ModInitializer
 {
@@ -31,6 +39,10 @@ public class StardewValley implements ModInitializer
 
         //Networking Registry List
         CurrencyNetworking.init();
+        DateNetworking.init();
+
+        //Command Registry List
+        CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> { SeasonCommands.register(dispatcher); });
     }
 
     //ITEM GROUPS

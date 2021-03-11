@@ -1,22 +1,30 @@
 package com.thallium.sdvm;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import com.thallium.sdvm.blocks.keg.CurrencyBookGuiDescription;
-import com.thallium.sdvm.blocks.keg.CurrencyBookScreen;
+import com.thallium.sdvm.blocks.currency_book.CurrencyBookBlockEntityRenderer;
+import com.thallium.sdvm.blocks.currency_book.CurrencyBookGui;
+import com.thallium.sdvm.blocks.currency_book.CurrencyBookScreen;
+import com.thallium.sdvm.blocks.selling_block.SellingBlockGui;
+import com.thallium.sdvm.blocks.selling_block.SellingBlockScreen;
 import com.thallium.sdvm.entity.villagers.clint.ClintEntityRenderer;
-import com.thallium.sdvm.gui.entity.clint.ClintGuiDescription;
+import com.thallium.sdvm.gui.calendar.fall.FallCalendarGui;
+import com.thallium.sdvm.gui.calendar.fall.FallScreen;
+import com.thallium.sdvm.gui.calendar.summer.SummerCalendarGui;
+import com.thallium.sdvm.gui.calendar.summer.SummerScreen;
+import com.thallium.sdvm.gui.calendar.winter.WinterCalendarGui;
+import com.thallium.sdvm.gui.calendar.winter.WinterScreen;
+import com.thallium.sdvm.gui.entity.clint.ClintGui;
 import com.thallium.sdvm.gui.entity.clint.ClintGuiScreen;
 import com.thallium.sdvm.gui.entity.marlon.MarlonGuiScreen;
-import com.thallium.sdvm.gui.entity.marlon.MarlonGuiDescription;
-import com.thallium.sdvm.blocks.vendor.*;
+import com.thallium.sdvm.gui.entity.marlon.MarlonGui;
 import com.thallium.sdvm.entity.villagers.marlon.MarlonEntityRenderer;
-import com.thallium.sdvm.gui.calendar.CalendarGui;
-import com.thallium.sdvm.gui.calendar.CalendarScreen;
+import com.thallium.sdvm.gui.calendar.spring.SpringCalendarGui;
+import com.thallium.sdvm.gui.calendar.spring.SpringScreen;
 import com.thallium.sdvm.gui.hud.StardewHud;
-import com.thallium.sdvm.items.backpacks.BackpackGuiDescription;
+import com.thallium.sdvm.items.backpacks.BackpackGui;
 import com.thallium.sdvm.items.backpacks.BackpackScreen;
 import com.thallium.sdvm.registry.ModEntity;
 import com.thallium.sdvm.registry.ModScreens;
+import com.thallium.sdvm.util.seasons.Season;
 import io.github.cottonmc.cotton.gui.client.CottonHud;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
@@ -25,7 +33,6 @@ import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.options.KeyBinding;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.util.InputUtil;
@@ -39,10 +46,6 @@ public class StardewValleyClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
-        ScreenRegistry.register(VendingBlockScreenHandler.TYPE, VendingBlockScreen::new);
-        BlockRenderLayerMap.INSTANCE.putBlock(VendingBlock.INSTANCE, RenderLayer.getTranslucent());
-        BlockEntityRendererRegistry.INSTANCE.register(VendingBlockEntity.TYPE, VendingBlockEntityRenderer::new);
-
         //Hud Additions
         CottonHud.INSTANCE.add(new StardewHud(),405,  -20, 10, 10);
 
@@ -51,11 +54,21 @@ public class StardewValleyClient implements ClientModInitializer
 
         ClientTickEvents.END_CLIENT_TICK.register(client ->
         {
-            while (calendarKey.wasPressed())
+            while (calendarKey.isPressed())
             {
-                //client.player.sendMessage(new LiteralText("Key 1 was pressed!"), false);
-                //CottonHud.INSTANCE.add(new CalendarGui(), 1, 1, 340, 168);
-                MinecraftClient.getInstance().openScreen(new CalendarScreen(new CalendarGui()));
+                if (Season.isSpring())
+                {
+                    client.openScreen(new SpringScreen(new SpringCalendarGui()));
+                } else if (Season.isSummer())
+                {
+                    client.openScreen(new SummerScreen(new SummerCalendarGui()));
+                } else if (Season.isFall())
+                {
+                    client.openScreen(new FallScreen(new FallCalendarGui()));
+                } else if (Season.isWinter())
+                {
+                    client.openScreen(new WinterScreen(new WinterCalendarGui()));
+                }
             }
         });
 
@@ -70,12 +83,15 @@ public class StardewValleyClient implements ClientModInitializer
             return new ClintEntityRenderer(dispatcher);
         });
 
+        BlockEntityRendererRegistry.INSTANCE.register(ModEntity.CURRENCY_BOOK, CurrencyBookBlockEntityRenderer::new);
+
 
 
         //Screen Registry
-        ScreenRegistry.<MarlonGuiDescription, MarlonGuiScreen>register(ModScreens.MARLON_SHOP, (gui, inventory, title) -> new MarlonGuiScreen(gui, inventory.player, title));
-        ScreenRegistry.<ClintGuiDescription, ClintGuiScreen>register(ModScreens.CLINT_SHOP, (gui, inventory, title) -> new ClintGuiScreen(gui, inventory.player, title));
-        ScreenRegistry.<BackpackGuiDescription, BackpackScreen>register(ModScreens.BACKPACK, (gui, inventory, title) -> new BackpackScreen(gui, inventory.player, title));
-        ScreenRegistry.<CurrencyBookGuiDescription, CurrencyBookScreen>register(ModScreens.CURRENCY_BOOK, (gui, inventory, title) -> new CurrencyBookScreen(gui, inventory.player, title));
+        ScreenRegistry.<MarlonGui, MarlonGuiScreen>register(ModScreens.MARLON_SHOP, (gui, inventory, title) -> new MarlonGuiScreen(gui, inventory.player, title));
+        ScreenRegistry.<ClintGui, ClintGuiScreen>register(ModScreens.CLINT_SHOP, (gui, inventory, title) -> new ClintGuiScreen(gui, inventory.player, title));
+        ScreenRegistry.<BackpackGui, BackpackScreen>register(ModScreens.BACKPACK, (gui, inventory, title) -> new BackpackScreen(gui, inventory.player, title));
+        ScreenRegistry.<CurrencyBookGui, CurrencyBookScreen>register(ModScreens.CURRENCY_BOOK, (gui, inventory, title) -> new CurrencyBookScreen(gui, inventory.player, title));
+        ScreenRegistry.<SellingBlockGui, SellingBlockScreen>register(ModScreens.SELL_BLOCK, ((sellingBlockGui, playerInventory, text) -> new SellingBlockScreen(sellingBlockGui, playerInventory.player, text)));
     }
 }

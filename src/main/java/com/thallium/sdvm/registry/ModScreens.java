@@ -1,12 +1,14 @@
 package com.thallium.sdvm.registry;
 
 import com.thallium.sdvm.StardewValley;
-import com.thallium.sdvm.blocks.keg.CurrencyBookGuiDescription;
-import com.thallium.sdvm.gui.entity.clint.ClintGuiDescription;
-import com.thallium.sdvm.gui.entity.marlon.MarlonGuiDescription;
-import com.thallium.sdvm.gui.popup.VillagerPopupDescription;
-import com.thallium.sdvm.blocks.vendor.VendingBlockScreenHandler;
-import com.thallium.sdvm.items.backpacks.BackpackGuiDescription;
+import com.thallium.sdvm.blocks.currency_book.CurrencyBookGui;
+import com.thallium.sdvm.blocks.selling_block.SellingBlockGui;
+import com.thallium.sdvm.gui.entity.clint.ClintGui;
+import com.thallium.sdvm.gui.entity.marlon.MarlonGui;
+import com.thallium.sdvm.gui.fishing.FishingGui;
+import com.thallium.sdvm.gui.frienship.FriendshipGui;
+import com.thallium.sdvm.gui.popup.VillagerPopupGui;
+import com.thallium.sdvm.items.backpacks.BackpackGui;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.screen.ScreenHandlerContext;
@@ -15,30 +17,35 @@ import net.minecraft.util.Identifier;
 
 public class ModScreens
 {
-    public static ScreenHandlerType<MarlonGuiDescription> MARLON_SHOP;
-    public static ScreenHandlerType<ClintGuiDescription> CLINT_SHOP;
-
-    public static ScreenHandlerType<VillagerPopupDescription> VILLAGER_POPUP;
-
-    public static ScreenHandlerType<CurrencyBookGuiDescription> CURRENCY_BOOK;
-
-    public static ScreenHandlerType<BackpackGuiDescription> BACKPACK;
-
     private static PlayerEntity player;
     private static ScreenHandlerContext context;
 
+    public static ScreenHandlerType<MarlonGui> MARLON_SHOP;
+    public static ScreenHandlerType<ClintGui> CLINT_SHOP;
+
+    public static ScreenHandlerType<FriendshipGui> FRIENDSHIP_SCREEN;
+    public static ScreenHandlerType<FishingGui> FISHING_SCREEN;
+
+    public static ScreenHandlerType<VillagerPopupGui> VILLAGER_POPUP;
+
+    public static ScreenHandlerType<CurrencyBookGui> CURRENCY_BOOK;
+    public static ScreenHandlerType<SellingBlockGui> SELL_BLOCK;
+
+    public static ScreenHandlerType<BackpackGui> BACKPACK;
+
     public static void registerScreens()
     {
-        //Block Guis
-        VendingBlockScreenHandler.TYPE = ScreenHandlerRegistry.registerSimple(new Identifier(StardewValley.Mod_ID, "vending_block"), VendingBlockScreenHandler::new);
-
         //Villager Guis
-        MARLON_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("marlon_block"), (syncId, inventory) -> new MarlonGuiDescription(syncId, inventory));
-        CLINT_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("clint_block"), (syncId, inventory) -> new ClintGuiDescription(syncId, inventory, player));
-        VILLAGER_POPUP = ScreenHandlerRegistry.registerSimple(StardewValley.id("villager_popup"), (syncId, inventory) -> new VillagerPopupDescription(syncId, inventory, ScreenHandlerContext.EMPTY, player));
+        MARLON_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("marlon_block"), MarlonGui::new);
+        CLINT_SHOP = ScreenHandlerRegistry.registerSimple(StardewValley.id("clint_block"), (syncId, inventory) -> new ClintGui(syncId, inventory, player));
+        VILLAGER_POPUP = ScreenHandlerRegistry.registerSimple(StardewValley.id("villager_popup"), (syncId, inventory) -> new VillagerPopupGui(syncId, inventory, ScreenHandlerContext.EMPTY, player));
 
-        CURRENCY_BOOK = ScreenHandlerRegistry.registerSimple(StardewValley.id("currency_book"), (syncId, inventory) -> new CurrencyBookGuiDescription(syncId, inventory, player));
+        FRIENDSHIP_SCREEN = ScreenHandlerRegistry.registerSimple(StardewValley.id("friendship_screen"), (syncId, inventory) -> new FriendshipGui(syncId, inventory, player));
+        FISHING_SCREEN = ScreenHandlerRegistry.registerSimple(StardewValley.id("fishing_screen"), (syncId, inventory) -> new FishingGui(syncId, inventory, player));
 
-        BACKPACK = ScreenHandlerRegistry.registerSimple(StardewValley.id("backpack"), (syncId, inventory) -> new BackpackGuiDescription(syncId, inventory, ScreenHandlerContext.EMPTY));
+        CURRENCY_BOOK = ScreenHandlerRegistry.registerSimple(StardewValley.id("currency_book"), (syncId, inventory) -> new CurrencyBookGui(syncId, inventory, player));
+        SELL_BLOCK = ScreenHandlerRegistry.registerSimple(StardewValley.id("sell_block"), (syncId, inventory) -> new SellingBlockGui(syncId, inventory, context));
+
+        BACKPACK = ScreenHandlerRegistry.registerSimple(StardewValley.id("backpack"), (syncId, inventory) -> new BackpackGui(syncId, inventory, ScreenHandlerContext.EMPTY));
     }
 }
