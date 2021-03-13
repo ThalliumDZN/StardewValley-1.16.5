@@ -4,8 +4,8 @@ import net.minecraft.nbt.CompoundTag;
 
 public class FriendshipComponent implements IFriendshipComponent
 {
-    public int amount;
-    private final int maxAmount = 100;
+    public int friendship;
+    private final int maxFriendship = 2500;
 
     @Override
     public int getAmount()

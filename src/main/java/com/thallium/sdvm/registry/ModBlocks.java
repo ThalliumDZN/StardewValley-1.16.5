@@ -3,7 +3,6 @@ package com.thallium.sdvm.registry;
 import com.thallium.sdvm.StardewValley;
 import com.thallium.sdvm.blocks.currency_book.CurrencyBookBlock;
 import com.thallium.sdvm.blocks.selling_block.SellingBlock;
-import com.thallium.sdvm.blocks.vendor.VendingBlock;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
@@ -25,9 +24,6 @@ public class ModBlocks
     {
         //Basic Blocks
         Registry.register(Registry.BLOCK, new Identifier(StardewValley.Mod_ID, "iridium_block"), IRIDIUM_BLOCK);
-
-        //Machine Blocks
-        Registry.register(Registry.BLOCK, new Identifier(StardewValley.Mod_ID, "vending_block"), VendingBlock.INSTANCE);
 
         //Misc Blocks
         Registry.register(Registry.BLOCK, new Identifier("sdvm", "sell_block"), SELL_BLOCK);

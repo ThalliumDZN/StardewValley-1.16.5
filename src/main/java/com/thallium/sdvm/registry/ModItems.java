@@ -2,8 +2,6 @@ package com.thallium.sdvm.registry;
 
 import com.thallium.sdvm.StardewValley;
 import com.thallium.sdvm.blocks.currency_book.CurrencyBookBlock;
-import com.thallium.sdvm.blocks.selling_block.SellingBlock;
-import com.thallium.sdvm.blocks.vendor.VendingBlock;
 import com.thallium.sdvm.items.backpacks.Backpack;
 import com.thallium.sdvm.items.watering.WateringCan;
 import com.thallium.sdvm.items.food.FoodList;
@@ -47,7 +45,6 @@ public class ModItems
 
         //Block Items
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "iridium_block"), IRIDIUM_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "vending_block"), VendingBlock.ITEM);
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "currency_book"), CurrencyBookBlock.ITEM);
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "sell_block"), SELLING_BLOCK);
 
