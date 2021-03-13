@@ -17,12 +17,6 @@ public class WFishingPanel extends WPlainPanel
     }
 
     @Override
-    public void tick()
-    {
-        super.tick();
-    }
-
-    @Override
     public void paint(MatrixStack matrices, int x, int y, int mouseX, int mouseY)
     {
         super.paint(matrices, x, y, mouseX, mouseY);

@@ -9,8 +9,6 @@ import org.jetbrains.annotations.Nullable;
 
 public abstract class BaseVillagerEntity extends PassiveEntity
 {
-
-
     protected BaseVillagerEntity(EntityType<? extends PassiveEntity> entityType, World world)
     {
         super(entityType, world);
