@@ -8,7 +8,7 @@ This is a large mod for Minecraft Java Edition that practically implements every
 
 ThalliumDZN - General Modding
 
-AshIndigo - Currency System and Packet Handling
+AshIndigo - Currency System, Packet Handeling, Fishing System
 
 Pyrofab - Packet Handling
 
