@@ -10,6 +10,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.screen.NamedScreenHandlerFactory;
 import net.minecraft.screen.ScreenHandler;
+import net.minecraft.screen.ScreenHandlerFactory;
+import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.Vec3d;
@@ -20,8 +22,7 @@ import top.theillusivec4.somnus.api.WorldSleepEvents;
 import top.theillusivec4.somnus.api.client.SleepRenderEvents;
 import top.theillusivec4.somnus.mixin.MixinServerWorld;
 
-public class ClintEntity extends BaseVillagerEntity implements NamedScreenHandlerFactory
-{
+public class ClintEntity extends BaseVillagerEntity implements @Nullable NamedScreenHandlerFactory {
     public ClintEntity(EntityType<? extends PassiveEntity> entityType, World world)
     {
         super(entityType, world);
@@ -45,5 +46,11 @@ public class ClintEntity extends BaseVillagerEntity implements NamedScreenHandle
     public @Nullable ScreenHandler createMenu(int syncId, PlayerInventory inv, PlayerEntity player)
     {
         return new ClintGui(syncId, inv, player);
+    }
+
+    @Override
+    public Text getDisplayName()
+    {
+        return null;
     }
 }

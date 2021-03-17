@@ -4,6 +4,10 @@ import net.minecraft.client.MinecraftClient;
 
 public class TimeUtil
 {
+    /*
+        Currently not being used, might be in the future
+    */
+
     private static MinecraftClient mc;
     private static long ticks = mc.world.getTime();
 

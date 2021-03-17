@@ -1,50 +1,25 @@
 package com.thallium.sdvm.mixin;
 
+import com.thallium.sdvm.registry.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FarmlandBlock;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.server.world.ServerWorld;
-import net.minecraft.state.property.IntProperty;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.WorldView;
-import org.spongepowered.asm.mixin.Final;
+import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
-
-import java.util.Random;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(FarmlandBlock.class)
 public class MixinFarmland
 {
-    @Final
-    @Shadow
-    public static IntProperty MOISTURE;
 
-    /**
-     * @author Thallium
-     */
-    @Overwrite
-    public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random)
-    {
-        int i = (Integer)state.get(MOISTURE);
-        if (!isWatered(world, pos))
-        {
-            assert MinecraftClient.getInstance().world != null;
-            if (MinecraftClient.getInstance().world.getTime() == 0)
-            {
-                world.setBlockState(pos, (BlockState)state.with(MOISTURE, 0));
-                System.out.println("A NEW DAY HAS STARTED!");
-            }
+    @Inject(method = "setToDirt", at = @At("HEAD"), cancellable = true)
+    private static void setToDirt(BlockState state, World world, BlockPos pos, CallbackInfo ci) {
+        if (state.getBlock() == ModBlocks.FERTILIZED_FARMLAND) {
+            world.setBlockState(pos, Block.pushEntitiesUpBeforeBlockChange(state, ModBlocks.FERTILIZED_FARMLAND.getDefaultState(), world, pos));
+            ci.cancel();
         }
-            else
-            {
-                world.setBlockState(pos, (BlockState)state.with(MOISTURE, 0));
-            }
-    }
-
-    private static boolean isWatered(WorldView world, BlockPos pos)
-    {
-        return false;
     }
 }

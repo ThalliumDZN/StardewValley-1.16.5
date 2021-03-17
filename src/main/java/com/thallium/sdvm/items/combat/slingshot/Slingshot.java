@@ -14,7 +14,9 @@ import java.util.function.Predicate;
 
 public class Slingshot extends RangedSlingshot implements Vanishable
 {
-
+    /*
+        work in progress
+    */
     public Slingshot(Settings settings)
     {
         super(settings);

@@ -18,6 +18,9 @@ import java.util.Objects;
 
 public class WClearButton extends WWidget
 {
+    /*
+        this will be removed before release
+    */
     private Text textField;
     private boolean enabled = true;
     protected HorizontalAlignment alignment;

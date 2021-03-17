@@ -1,5 +1,6 @@
 package com.thallium.sdvm.entity.villagers;
 
+import com.thallium.sdvm.util.npc.VillagerUtils;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -7,8 +8,10 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.world.World;
 import org.jetbrains.annotations.Nullable;
 
-public abstract class BaseVillagerEntity extends PassiveEntity
+public abstract class BaseVillagerEntity extends PassiveEntity implements VillagerUtils
 {
+    public boolean married;
+
     protected BaseVillagerEntity(EntityType<? extends PassiveEntity> entityType, World world)
     {
         super(entityType, world);
@@ -17,13 +20,7 @@ public abstract class BaseVillagerEntity extends PassiveEntity
     @Override
     public @Nullable PassiveEntity createChild(ServerWorld world, PassiveEntity entity)
     {
-        //Possibly the area for creating sdv children
         return null;
-    }
-
-    @Override
-    public boolean isPushable() {
-        return false;
     }
 
     @Override
@@ -44,5 +41,9 @@ public abstract class BaseVillagerEntity extends PassiveEntity
         return true;
     }
 
-
+    @Override
+    public boolean isMarried()
+    {
+        return married;
+    }
 }

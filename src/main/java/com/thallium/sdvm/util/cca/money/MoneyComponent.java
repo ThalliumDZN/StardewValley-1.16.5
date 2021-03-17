@@ -1,11 +1,14 @@
 package com.thallium.sdvm.util.cca.money;
 
 import com.thallium.sdvm.util.cca.MyComponents;
+import com.thallium.sdvm.util.shipping.ShippingUtils;
 import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.world.World;
 
 public class MoneyComponent implements IMoneyComponent, AutoSyncedComponent {
@@ -56,6 +59,15 @@ public class MoneyComponent implements IMoneyComponent, AutoSyncedComponent {
             player.giveItemStack(item);
         }
         MyComponents.MONEY.sync(ComponentProvider.fromEntity(player));
+    }
+
+    @Override
+    public void sell()
+    {
+        Tag t = ShippingUtils.si.getTags();
+        TranslatableText text = new TranslatableText(t.toString());
+
+        System.out.println(text);
     }
 
     @Override

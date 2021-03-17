@@ -4,12 +4,11 @@ import com.thallium.sdvm.StardewValley;
 import com.thallium.sdvm.items.rings.GlowRing;
 import com.thallium.sdvm.items.rings.RubyRing;
 import com.thallium.sdvm.items.rings.SmallMagnetRing;
-import com.thallium.sdvm.items.rings.util.RingMaterial;
+import com.thallium.sdvm.util.rings.RingMaterial;
 import com.thallium.sdvm.items.rings.MagnetRing;
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketSlots;
-import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 

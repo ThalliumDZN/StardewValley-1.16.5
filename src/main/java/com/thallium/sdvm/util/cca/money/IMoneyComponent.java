@@ -16,4 +16,5 @@ public interface IMoneyComponent extends ComponentV3
     void resetMoney();
 
     void purchase(ItemStack item, int cost);
+    void sell();
 }

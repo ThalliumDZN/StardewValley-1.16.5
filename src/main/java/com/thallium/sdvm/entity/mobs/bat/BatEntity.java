@@ -6,6 +6,10 @@ import net.minecraft.world.World;
 
 public class BatEntity extends HostileEntity
 {
+    /*
+        work in progress
+    */
+
     public BatEntity(EntityType<? extends HostileEntity> entityType, World world)
     {
         super(entityType, world);

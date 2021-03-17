@@ -2,7 +2,7 @@ package com.thallium.sdvm.items.rings;
 
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
-import com.thallium.sdvm.items.rings.util.RingMaterial;
+import com.thallium.sdvm.util.rings.RingMaterial;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;

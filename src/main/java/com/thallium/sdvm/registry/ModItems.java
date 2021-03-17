@@ -1,13 +1,13 @@
 package com.thallium.sdvm.registry;
 
 import com.thallium.sdvm.StardewValley;
-import com.thallium.sdvm.blocks.currency_book.CurrencyBookBlock;
 import com.thallium.sdvm.items.backpacks.Backpack;
 import com.thallium.sdvm.items.watering.WateringCan;
 import com.thallium.sdvm.items.food.FoodList;
 import com.thallium.sdvm.items.totems.WarpTotem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.BoneMealItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
@@ -31,7 +31,8 @@ public class ModItems
     public static final Item CAVE_CARROT = new Item(new Item.Settings().group(ItemGroup.FOOD).food(FoodList.CAVE_CARROT));
 
     //Watering Cans
-    public static final Item WATERING_CAN = new WateringCan(new FabricItemSettings());
+    public static final Item WATERING_CAN = new WateringCan(1, 12, 4, new Item.Settings().group(ItemGroup.TOOLS));
+    public static final Item FERTILIZER = new BoneMealItem(new Item.Settings().group(ItemGroup.TOOLS));
 
     //Backpacks
     public static final Item BACKPACK = new Backpack();
@@ -45,7 +46,6 @@ public class ModItems
 
         //Block Items
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "iridium_block"), IRIDIUM_BLOCK);
-        Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "currency_book"), CurrencyBookBlock.ITEM);
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "sell_block"), SELLING_BLOCK);
 
         //Warp Totems
@@ -56,6 +56,7 @@ public class ModItems
 
         //Watering Cans
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "watering_can"), WATERING_CAN);
+        Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "fertilizer"), FERTILIZER);
 
         //Backpacks
         Registry.register(Registry.ITEM, new Identifier(StardewValley.Mod_ID, "backpack"), BACKPACK);

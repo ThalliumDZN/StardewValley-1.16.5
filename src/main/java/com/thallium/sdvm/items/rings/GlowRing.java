@@ -1,6 +1,6 @@
 package com.thallium.sdvm.items.rings;
 
-import com.thallium.sdvm.items.rings.util.RingMaterial;
+import com.thallium.sdvm.util.rings.RingMaterial;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
@@ -13,6 +13,10 @@ import java.util.List;
 
 public class GlowRing extends RingMaterial
 {
+    /*
+        Need to figure out dynamic lighting for the glowing ring
+    */
+
     public GlowRing(String name, String tooltip)
     {
         super(name, tooltip);

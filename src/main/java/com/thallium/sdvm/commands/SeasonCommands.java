@@ -1,7 +1,6 @@
 package com.thallium.sdvm.commands;
 
 import com.mojang.brigadier.CommandDispatcher;
-import com.thallium.sdvm.StardewValley;
 import com.thallium.sdvm.util.seasons.Season;
 import com.thallium.sdvm.util.seasons.SeasonList;
 import net.minecraft.server.command.CommandManager;
@@ -13,6 +12,9 @@ import net.minecraft.world.World;
 
 public class SeasonCommands
 {
+    /*
+        Originally from Fabric Seasons
+    */
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
         dispatcher.register(CommandManager.literal("season").requires((source) -> source.hasPermissionLevel(2))
                 .then(CommandManager.literal("set")

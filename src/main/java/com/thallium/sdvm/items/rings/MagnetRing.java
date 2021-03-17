@@ -1,6 +1,6 @@
 package com.thallium.sdvm.items.rings;
 
-import com.thallium.sdvm.items.rings.util.RingMaterial;
+import com.thallium.sdvm.util.rings.RingMaterial;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;

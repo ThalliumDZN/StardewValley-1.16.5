@@ -17,6 +17,9 @@ import org.jetbrains.annotations.Nullable;
 
 public class Backpack extends Item implements NamedScreenHandlerFactory
 {
+    /*
+        Needs packet handling and slots are messed up
+    */
     public Backpack()
     {
         super(new Item.Settings().group(ItemGroup.TOOLS).maxCount(1));

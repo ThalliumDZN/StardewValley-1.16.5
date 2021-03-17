@@ -7,12 +7,15 @@ import com.thallium.sdvm.util.networking.money.CurrencyNetworking;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.fabricmc.fabric.api.resource.ResourceManagerHelper;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.resource.ResourceType;
 import net.minecraft.util.Identifier;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import sun.net.ResourceManager;
 
 public class StardewValley implements ModInitializer
 {
@@ -30,6 +33,7 @@ public class StardewValley implements ModInitializer
         ModTrinkets.registerTrinkets();
         ModEntity.registerEntity();
         ModScreens.registerScreens();
+        ModResources.registerResources();
 
         //Networking Registry List
         CurrencyNetworking.init();
