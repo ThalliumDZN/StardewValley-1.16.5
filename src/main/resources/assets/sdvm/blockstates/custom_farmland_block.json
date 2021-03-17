@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "moisture=0": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=1": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=2": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=3": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=4": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=5": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=6": {
+      "model": "sdvm:block/custom_farmland_block"
+    },
+    "moisture=7": {
+      "model": "sdvm:block/custom_farmland_block_moist"
+    }
+  }
+}
