@@ -4,9 +4,14 @@
   "package": "com.thallium.sdvm.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "MixinAbstractBlock",
+    "MixinBoneMeal",
     "MixinButton",
-    "MixinDate",
+    "MixinCropBlock",
+    "MixinFarmland",
+    "MixinPlayerEntity",
     "MixinSeason",
+    "MixinServerPlayerEntity",
     "MixinTitleScreen",
     "MixinTradeOffer"
   ],
